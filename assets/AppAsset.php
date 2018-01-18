@@ -20,20 +20,22 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
-        'css/bootstrap.min.css',
-        'css/demo.css',
         'css/material-kit.css',
+        'https://fonts.googleapis.com/icon?family=Material+Icons',
+        'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+
 
     ];
     public $js = [
         'js/material.min.js',
         'js/material-kit.js',
         'js/nouislider.min.js',
-        'js/bootstrap.min.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',
-
+        'yii\web\JqueryAsset',
+        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
     ];
 }
