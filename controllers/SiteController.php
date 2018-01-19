@@ -3,7 +3,10 @@
 namespace app\controllers;
 
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\Json;
+use yii\httpclient\Client;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -12,6 +15,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public static $url = "http://localhost/learn-arabic/api/v1";
     /**
      * @inheritdoc
      */
@@ -101,16 +105,19 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionContact()
+    public function actionVideo()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $client = new Client();
 
-            return $this->refresh();
+        $response = $client->createRequest()->setMethod('get')->setUrl(self::$url.'/video')->send();
+        if($response->isOk){
+            $data = $response->getData();
         }
-        return $this->render('contact', [
-            'model' => $model,
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $data
+        ]);
+        return $this->render('video', [
+            'dataProvider' => $data,
         ]);
     }
 
@@ -119,8 +126,21 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionMateri()
     {
-        return $this->render('about');
+        $data=null;
+        $client = new Client();
+        $response = $client->createRequest()->setMethod('get')->setUrl(self::$url.'/materi')->send();
+        if($response->isOk){
+            $data = $response->data;
+        }
+
+        $dataProvider = new ArrayDataProvider([
+           'allModels' => $data,
+
+        ]);
+        return $this->render('materi',[
+            'dataProvider'=>$dataProvider,
+        ]);
     }
 }

@@ -37,5 +37,6 @@ class AppAsset extends AssetBundle
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
+        'yii\materialicons\AssetBundle'
     ];
 }

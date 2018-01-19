@@ -95,8 +95,6 @@ $this->title = 'Beranda';
 
             </div>
 
-
-
         </div>
 
     </div>

@@ -10,7 +10,7 @@
 <footer class="footer">
     <div class="container">
         <div class="copyright pull-right">
-            &copy; <?= date('Y') ?>, A <i class="material-icons">send</i> B.
+            &copy; <?= date('Y') ?>, Adryan Eka Vandra <?= \yii\materialicons\MD::icon(\yii\materialicons\MD::_PEOPLE)?>
         </div>
     </div>
 </footer>

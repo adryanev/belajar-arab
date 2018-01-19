@@ -23,8 +23,8 @@ Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
         ['label' => 'Beranda', 'url' => ['/site/index']],
-        ['label' => 'Materi', 'url' => ['/site/about']],
-        ['label' => 'Video', 'url' => ['/site/contact']],
+        ['label' => 'Materi', 'url' => ['/site/materi']],
+        ['label' => 'Video', 'url' => ['/site/video']],
 
     ],
 ]);
