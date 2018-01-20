@@ -23,7 +23,7 @@ $this->title = 'Video';
                         <div class=\"nav-tabs-wrapper\">
                             <ul class=\"nav nav-tabs\" data-tabs=\"tabs\">
                                 <li class=\"active\">
-                                    <h3>$namaVideo</h3>
+                                    <h4>$namaVideo</h4>
                                 </li>
                             </ul>
                         </div>
@@ -32,7 +32,7 @@ $this->title = 'Video';
                 </div>
                 <div class=\"content\">
                     <div class=\"tab-content text-center\">
-                        <div class=\"tab-pane active\" id=\"jumlah_barang\">
+                        <div class=\"tab-pane active\">
                             <iframe id=\"ytplayer$i\" type=\"text / html\" width=\"640\" height=\"360\"
                         src=\"https://www.youtube.com/embed/$idYoutube\"></iframe>
                         </div>

@@ -108,7 +108,7 @@ class SiteController extends Controller
     public function actionVideo()
     {
         $client = new Client();
-
+        $data = null;
         $response = $client->createRequest()->setMethod('get')->setUrl(self::$url.'/video')->send();
         if($response->isOk){
             $data = $response->getData();
@@ -128,19 +128,24 @@ class SiteController extends Controller
      */
     public function actionMateri()
     {
-        $data=null;
+
         $client = new Client();
-        $response = $client->createRequest()->setMethod('get')->setUrl(self::$url.'/materi')->send();
-        if($response->isOk){
-            $data = $response->data;
+        $dataMateri=null;
+        $dataKategori = null;
+
+        $responseMateri = $client->createRequest()->setMethod('get')->setUrl(self::$url.'/materi')->send();
+        if($responseMateri->isOk){
+            $dataMateri = $responseMateri->data;
+        }
+        $responseKategori = $client->createRequest()->setMethod('get')->setUrl(self::$url.'/kategori')->send();
+        if($responseKategori->isOk){
+            $dataKategori = $responseKategori->data;
         }
 
-        $dataProvider = new ArrayDataProvider([
-           'allModels' => $data,
-
-        ]);
         return $this->render('materi',[
-            'dataProvider'=>$dataProvider,
+            'materiProvider'=>$dataMateri,
+            'kategoriProvider'=>$dataKategori,
+
         ]);
     }
 }
